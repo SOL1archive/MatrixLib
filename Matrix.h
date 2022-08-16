@@ -137,6 +137,24 @@ Matrix subMatrix(
     unsigned int col2
 );
 
+/*  Find Leading 1 in given row
+    Return -1 when leading 1 does not exist.
+* @param m - Input Matrix
+* @param row - Given Row
+*/
+int findLeading1(Matrix m, unsigned int row);
+
+/*  Check the matrix is echelon form
+* @param m - Input Matrix
+*/
+bool isEchelonForm(Matrix m);
+
+/*  Gauss Elimination
+    Notice. This function doesn't support lazy evaluation.
+* @param m - Input Matrix
+*/
+Matrix gaussElim(Matrix m);
+
 /****************************
           Solution
 ****************************/

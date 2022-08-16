@@ -400,8 +400,8 @@ Matrix subMatrix(
         col2 = tmp;
     }
 
-    if (m.row < row2 || 
-        m.col < col2 ||
+    if (m.row <= row2 || 
+        m.col <= col2 ||
         row1 < 0 ||
         col1 < 0
     ) 
@@ -425,6 +425,131 @@ Matrix subMatrix(
     
     return result_m;
 }
+
+int findLeading1(Matrix m, unsigned int row)
+{
+    if (m.row <= row)
+    {
+        return -1;
+    }
+    else
+    {
+        for (int col = 0; col < m.col; col++)
+        {
+            if (m.matrix[row][col] == 0)
+            {
+                continue;
+            }
+            else if (m.matrix[row][col] == 1)
+            {
+                return col;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+}
+
+bool isEchelonForm(Matrix m)
+{
+    for (int row = 0; row < m.row; row++)
+    {
+        if (findLeading1(m, row) == -1)
+        {
+            return false;
+        }
+    }
+
+    return true;
+    
+}
+
+int type1(Matrix m, unsigned int row, MatrixType num)
+{
+    if (m.row <= row)
+    {
+        return -1;
+    }
+
+    for (int col = 0; col < m.col; col++)
+    {
+        m.matrix[row][col] /= num;
+    }
+    
+    return 1;
+}
+
+int type2(Matrix m, unsigned int row1, unsigned int row2)
+{
+    if (m.row <= row1 || m.row <= row2)
+    {
+        return -1;
+    }
+    else
+    {
+        MatrixType* tmp = m.matrix[row1];
+        m.matrix[row1] = m.matrix[row2];
+        m.matrix[row2] = tmp;
+    }
+    
+    return 1;
+}
+
+int type3(Matrix m, unsigned int row, unsigned int target_row, MatrixType num)
+{
+    if (m.row <= row || m.row <= target_row)
+    {
+        return -1;
+    }
+    else
+    {
+
+    }
+    
+}
+
+Matrix gaussElim(Matrix m)
+{
+    Matrix result_m = deepCopyMatrix(m);
+
+    int leading_index;
+    int leading_var;
+
+    for (int row = 0; row < result_m.row; row++)
+    {
+        for (int col = 0; col < result_m.col; col++)
+        {
+            if (result_m.matrix[row][col] == 0)
+            {
+                continue;
+            }
+            else
+            {
+                leading_index = col;
+                leading_var = result_m.matrix[row][col];
+                break;
+            }
+        }
+
+        for (int col = leading_index; col < result_m.col; col++)
+        {
+            result_m.matrix[row][col] /= leading_var;
+        }
+
+        for (int i = row + 1; i < result_m.row; i++)
+        {
+            result_m.matrix[i][leading_index]  
+        }
+        
+    }
+
+    
+    return result_m;
+}
+
+
 
 /****************************
           Solutions
