@@ -385,6 +385,8 @@ Matrix subMatrix(
     int row_len;
     int col_len;
     int tmp;
+    Matrix result_m;
+
     if (row1 > row2)
     {   
         tmp = row1;
@@ -398,16 +400,27 @@ Matrix subMatrix(
         col2 = tmp;
     }
 
-    row_len = row2 - row1;
-    col_len = col2 - col1;
-    Matrix result_m = getMatrix(row_len, col_len);
-
-    for (int row = row1; row < row2; row++)
+    if (m.row < row2 || 
+        m.col < col2 ||
+        row1 < 0 ||
+        col1 < 0
+    ) 
     {
-        for (int col = col1; col < col2; col++)
+        result_m = nullMatrix();
+    }
+    else
+    {
+        row_len = row2 - row1;
+        col_len = col2 - col1;
+        result_m = getMatrix(row_len, col_len);
+
+        for (int row = row1; row < row2; row++)
         {
-            result_m.matrix[row - row1][col - col1] = m.matrix[row][col];
-        }   
+            for (int col = col1; col < col2; col++)
+            {
+                result_m.matrix[row - row1][col - col1] = m.matrix[row][col];
+            }   
+        }
     }
     
     return result_m;
