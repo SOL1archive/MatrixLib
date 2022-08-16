@@ -374,6 +374,45 @@ void printSequence(Sequence sequence, const int seq_size)
     printf("\n");
 }
 
+Matrix subMatrix(
+    Matrix m, 
+    unsigned int row1,
+    unsigned int row2,
+    unsigned int col1,
+    unsigned int col2
+) 
+{
+    int row_len;
+    int col_len;
+    int tmp;
+    if (row1 > row2)
+    {   
+        tmp = row1;
+        row1 = row2;
+        row2 = tmp;
+    }
+    if (col1 > col2)
+    {   
+        tmp = col1;
+        col1 = col2;
+        col2 = tmp;
+    }
+
+    row_len = row2 - row1;
+    col_len = col2 - col1;
+    Matrix result_m = getMatrix(row_len, col_len);
+
+    for (int row = row1; row < row2; row++)
+    {
+        for (int col = col1; col < col2; col++)
+        {
+            result_m.matrix[row - row1][col - col1] = m.matrix[row][col];
+        }   
+    }
+    
+    return result_m;
+}
+
 /****************************
           Solutions
 ****************************/

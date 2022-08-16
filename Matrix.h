@@ -122,6 +122,21 @@ Matrix multipleProduct(const Matrix* m_array, const int array_size, Sequence seq
 */
 bool matrixEqual(Matrix m1, Matrix m2);
 
+/*  Generating Sub Metrix
+* @param m - metrix
+* @param row1 - metrix row1
+* @param row2 - metrix row2
+* @param col1 - metrix col1
+* @param col2 - metrix col2
+*/
+Matrix subMatrix(
+    Matrix m, 
+    unsigned int row1,
+    unsigned int row2,
+    unsigned int col1,
+    unsigned int col2
+);
+
 /****************************
           Solution
 ****************************/
