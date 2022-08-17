@@ -505,9 +505,13 @@ int type3(Matrix m, unsigned int row, unsigned int target_row, MatrixType num)
     }
     else
     {
-
+        for (int col = 0; col < m.col; col++)
+        {
+            m.matrix[target_row][col] += num * m.matrix[row][col];
+        }
     }
-    
+
+    return 1;
 }
 
 Matrix gaussElim(Matrix m)
@@ -533,23 +537,15 @@ Matrix gaussElim(Matrix m)
             }
         }
 
-        for (int col = leading_index; col < result_m.col; col++)
+        type1(result_m, row, 1.0 / leading_var);
+        for (int op_row = row + 1; op_row < result_m.row; op_row++)
         {
-            result_m.matrix[row][col] /= leading_var;
-        }
-
-        for (int i = row + 1; i < result_m.row; i++)
-        {
-            result_m.matrix[i][leading_index]  
-        }
-        
+            type3(result_m, row, op_row, result_m.matrix[op_row][leading_index]);
+        }    
     }
-
     
     return result_m;
 }
-
-
 
 /****************************
           Solutions

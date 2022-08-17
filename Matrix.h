@@ -112,7 +112,7 @@ Matrix matrixProduct(const Matrix m1, const Matrix m2);
 * @param m_array - Array of matrix that want to product
 * @param array_size - Size of array
 * @param sequence - Sequence of product
-* @return - Result of multiple production of matrix. Null matrix if sequence is not safe.
+* @return - Result of multiple production of matrix. Null matrix if sequence is not defined.
 */
 Matrix multipleProduct(const Matrix* m_array, const int array_size, Sequence sequence);
 
