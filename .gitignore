@@ -1,3 +1,6 @@
-*.txt
-main.c
 .vscode/
+output/
+*.out/
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
