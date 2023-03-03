@@ -1,0 +1,1 @@
+ADD_EXECUTABLE(a.out test_main.c test.c Matrix.h Matrix.c)
