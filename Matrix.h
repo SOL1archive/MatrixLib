@@ -11,8 +11,6 @@ typedef struct Matrix
     int col;
 }   Matrix;
 
-typedef int* Sequence;
-
 /****************************
         Generate/Free
 ****************************/
@@ -111,10 +109,9 @@ Matrix matrixProduct(const Matrix m1, const Matrix m2);
 /*  Recursivly executes product of multiple matrixes according to sequence.
 * @param m_array - Array of matrix that want to product
 * @param array_size - Size of array
-* @param sequence - Sequence of product
 * @return - Result of multiple production of matrix. Null matrix if sequence is not defined.
 */
-Matrix multipleProduct(const Matrix* m_array, const int array_size, Sequence sequence);
+Matrix multipleProduct(const Matrix* m_array, const int array_size);
 
 /*  Check whether 2 matrixes are equal.
 * @param m1 - First matrix
@@ -159,29 +156,6 @@ Matrix gaussElim(Matrix m);
           Solution
 ****************************/
 
-/* Print sequence
+/*  Multiply multiple matrixs with lowest cost. Find lowest cost solution with DP.
 */
-void printSequence(Sequence sequence, const int seq_size);
-
-int sumProductCost(Matrix* m_array, const int array_size, Sequence sequence, Matrix* result_p);
-// Base Version: Exhaustive search
-/*  
-* Premise: Every multiple operations has same cost regardless of elements' size.
-* @param array_size - Size of array
-* @param m_array - Array of matrix that want to product
-* @return - product sequence that has smallest costs by using recursion
-*/
-Sequence findLowestCost_BaseVersion(
-    const Matrix* m_array, 
-    const int array_size, 
-    Matrix* result_p, 
-    int* cost
-);
-
-// Advenced version
-Sequence findLowestCost_AdvencedVersion(
-    const Matrix* m_array,
-    const int array_size,
-    Matrix* result_p,
-    int* cost
-);
+Matrix multipleProduct(const Matrix* m_array, const int array_size);
